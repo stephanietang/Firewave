@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://firewave/content/firewave.css" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % firewaveDTD SYSTEM "chrome://firewave/locale/firewave.dtd">
+%firewaveDTD;
+]>
+
+<bindings
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <binding id="firewave-toolbar">
+    <content>
+      <xul:toolbar id="firewave-toolbar-body" flex="1">
+        <xul:spacer flex="1"/>
+        <xul:hbox id="firewave-toolbar-container" anonid="toolbutton-container" flex="2">
+          <xul:toolbarbutton class="firewave-tab" flex="1" type="radio" group="mode" id="homeButton" onmousedown="changeTab(0);" checked="true" >
+            <xul:image class="firewave-tab-icon" id="homeButtonIcon"/>
+          </xul:toolbarbutton>
+          <xul:toolbarbutton class="firewave-tab" flex="1" type="radio" group="mode" id="mentionsButton" onmousedown="changeTab(1);">
+            <xul:image class="firewave-tab-icon" id="mentionsButtonIcon"/>
+          </xul:toolbarbutton>
+          <xul:toolbarbutton class="firewave-tab" flex="1" type="radio" group="mode" id="messagesButton" onmousedown="changeTab(2);">
+            <xul:image class="firewave-tab-icon" id="messagesButtonIcon"/>
+          </xul:toolbarbutton>
+          <xul:toolbarbutton class="firewave-tab" flex="1" type="radio" group="mode" id="listsButton"    onmousedown="changeTab(3);">
+            <xul:image class="firewave-tab-icon" id="listsButtonIcon"/>
+          </xul:toolbarbutton>
+          <xul:toolbarbutton class="firewave-tab" flex="1" type="radio" group="mode" id="searchButton"   onmousedown="changeTab(4);">
+            <xul:image class="firewave-tab-icon" id="searchButtonIcon"/>
+          </xul:toolbarbutton>
+                </xul:hbox>
+            </xul:toolbar>
+        </content>
+    
+    </binding>
+
+</bindings>

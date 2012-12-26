@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://firewave/content/firewave.css" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % firewaveDTD SYSTEM "chrome://firewave/locale/firewave.dtd">
+%firewaveDTD;
+]>
+
+<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="firewave-preference"
+	persist="screenX screenY"
+	width="480" height="300">
+	
+	<script src="window.js" type="application/x-javascript;version=1.8"/>
+	<script src="utility.js" type="application/x-javascript;version=1.8"/>
+	<script src="accounts.js" type="application/x-javascript;version=1.8"/>
+	
+	<prefpane id="paneAccounts" onpaneload="gAccountsPane.init()">
+		
+		<groupbox flex="1">
+			<hbox flex="1">
+				<vbox flex="1" align="top">
+					<listbox id="accounts"  onselect="gAccountsPane.onSelectAccount()" flex="1"/>
+				</vbox>
+				<vbox>
+					<hbox flex="1" align="center" style="margin-top: 5px">
+						<button id="remove-account-button" label="&firewave.removeAccount;" oncommand="gAccountsPane.onRemoveAccount()"/>
+					</hbox>
+					<hbox flex="1" align="center" style="margin-top: 5px">
+						<button id="add-account-button" label="&firewave.addAccount;" oncommand="gAccountsPane.onAddAccount()"/>
+					</hbox>
+				</vbox>
+			</hbox>
+		</groupbox>
+	</prefpane>
+	
+</prefwindow>

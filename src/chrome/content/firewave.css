@@ -1,0 +1,66 @@
+/*
+ toolbar and top tabs
+*/
+firewave-toolbar {
+  -moz-binding: url("chrome://firewave/content/toolbar.xml#firewave-toolbar");
+  padding: 0px !important;
+  margin: 0px !important;
+  -moz-appearance: none;
+}
+
+#firewave-toolbar-body {
+  padding: 3px 5px 3px 5px !important;
+  margin: 0px !important;
+  -moz-appearance: none;
+  background-image: url("chrome://echofon/content/images/texture.gif") !important;
+  border-bottom: 1px solid #c2c2c2;
+}
+
+#firewave-toolbar-container {
+  margin: 0px 3px;
+  -moz-appearance: none;
+  height: 28px;
+  max-width: 450px;
+}
+
+#homeButtonIcon     { -moz-image-region: rect( 0px, 17px, 17px,  0px)}
+#mentionsButtonIcon { -moz-image-region: rect( 0px, 33px, 18px, 17px)}
+#messagesButtonIcon { -moz-image-region: rect( 0px, 56px, 15px, 33px)}
+#listsButtonIcon    { -moz-image-region: rect( 0px, 74px, 14px, 56px)}
+#searchButtonIcon   { -moz-image-region: rect( 0px, 92px, 18px, 74px)}
+
+.firewave-tab {
+  -moz-appearance: none !important;
+  border: 1px solid transparent !important;
+
+}
+
+.firewave-tab-icon
+{
+  margin: 0px 2px -1px 2px !important;
+  text-align: center;
+  list-style-image: url("chrome://echofon/content/images/window.png");
+}
+
+
+/*
+ weibo
+*/
+#firewave-main-window {
+  -moz-binding: url("chrome://firewave/content/content-view.xml#firewave-main-window");
+  border: none;
+}
+
+.firewave-weibo {
+  padding: 0px;
+  overflow-y: scroll;
+  background: #a7a7a7;
+}
+
+/*
+  Preference
+*/
+firewave-preference {
+  -moz-binding: url("chrome://firewave/content/preference.xml#firewave-preference");
+  border: none;
+}

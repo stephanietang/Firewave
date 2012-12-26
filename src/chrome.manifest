@@ -1,0 +1,15 @@
+#content
+content firewave jar:chrome/Firewave.jar!/content/
+overlay chrome://browser/content/browser.xul chrome://firewave/content/overlay.xul
+
+#skin
+skin firewave classic/1.0 jar:chrome/Firewave.jar!/skin/all/
+skin firewave-os classic/1.0 jar:chrome/Firewave.jar!/skin/unix/ 
+skin firewave-os classic/1.0 jar:chrome/Firewave.jar!/skin/win/ os=WINNT
+skin firewave-os classic/1.0 jar:chrome/Firewave.jar!/skin/winaero/ os=WINNT osversion>=6
+skin firewave-os classic/1.0 jar:chrome/Firewave.jar!/skin/mac os=Darwin
+style chrome://global/content/customizeToolbar.xul chrome://firewave/skin/overlay.css
+
+#locale
+locale firewave zh-CN jar:chrome/Firewave.jar!/locale/zh-CN/
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://firewave/content/firewave.css" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % firewaveDTD SYSTEM "chrome://firewave/locale/firewave.dtd">
+%firewaveDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+	id="firewave-main-window"
+	title="FireWave"
+	orient="horizontal">
+  
+  <script src="window.js" type="application/x-javascript;version=1.8"/>
+  <script src="utility.js" type="application/x-javascript;version=1.8"/>
+  
+  <!-- main content box -->
+  <vbox id="firewave-main-window-content" flex="1">
+    <toolbox>
+      <!-- Main toolbar -->
+      <!-- Include toolbars in the system and top tabs -->
+      <firewave-toolbar id="firewave-toolbar" noclosebutton="true" flex="1"/>
+    </toolbox>
+
+    <vbox flex="1" id="firewave-main-window-container">
+      <!-- weibo content -->
+      <vbox id="firewave-main-window" flex="1"/>
+    </vbox>
+
+  </vbox>
+  
+</window>
+

@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+
+<!--
+  Weibo Content View
+-->
+
+<!DOCTYPE overlay SYSTEM "chrome://firewave/locale/firewave.dtd">
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <binding id="firewave-main-window">
+    <content>
+      <xul:vbox flex="1">
+        <!-- weibo container -->
+        <xul:vbox flex="1" id="firewave-timeline-box" style="margin:0; padding:0; overflow:hidden">
+          <xul:scrollbox id="home-timeline" class="firewave-weibo" flex="1" orient="vertical" sborient="vertical"/>
+        </xul:vbox>
+
+      </xul:vbox>
+    </content>
+    
+    <implementation>
+      <constructor>
+        this._activeTab = 'home';
+        this._scrollPos = {'home':0, 'mentions':0, 'messages':0, 'lists':0, 'search':0};
+      </constructor>
+
+      <property name="activeTab">
+        <setter>
+        <![CDATA[
+
+          // save scroll position
+          var prev = this.scrollbox;
+          var y = {};
+          prev.getPosition({}, y);
+          this._scrollPos[this._activeTab] = y.value;
+
+          // change tab
+          document.getElementById(this._activeTab + '-timeline').collapsed = true;
+          this._activeTab = val;
+          document.getElementById(val + '-timeline').collapsed = false;
+
+
+          // jump to first unread if appropriate
+          var obj = this;
+          try {
+            var border = document.getElementById('echofon-unread-border-' + val);
+            var timer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
+            if (border && border.unread) {
+              timer.initWithCallback({notify: function() {window.jumpToUnread()}}, 1, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
+            }
+            else {
+              // restore scroll position with timer
+              timer.initWithCallback({notify: function() {obj.scrollbox.scrollTo(0, obj._scrollPos[obj._activeTab])}}, 1, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
+            }
+          }
+          catch (e) {}
+        ]]>
+        </setter>
+        <getter>
+          return this._activeTab;
+        </getter>
+      </property>
+
+      <field name="activeTab"/>
+
+      <property name="container">
+        <getter>
+          return document.getElementById(this._activeTab + '-timeline');
+        </getter>
+      </property>
+
+      <property name="scrollbox">
+        <getter>
+          return this.getContainer().boxObject.QueryInterface(Components.interfaces.nsIScrollBoxObject);
+        </getter>
+      </property>
+
+      <method name="getContainer">
+        <parameter name="tab"/>
+        <body>
+          if (tab == null) tab = this._activeTab;
+          return document.getElementById(tab + '-timeline');
+        </body>
+      </method>
+
+      <method name="loadMore">
+        <parameter name="tab"/>
+        <body>
+        <![CDATA[
+          if (!tab) tab = this.activeTab;
+          var e = document.getElementById(tab + '-timeline').lastChild;
+          if (e && e.tagName == "echofon-load-more") return e;
+          return null;
+        ]]>
+        </body>
+      </method>
+
+      <method name="removeAllTweets">
+        <body>
+          for (var i in this._scrollPos) {
+            var e = document.getElementById(i + "-timeline");
+            EchofonCommon.removeAllChild(e);
+            this._scrollPos[i] = 0;
+          }
+          this.scrollbox.scrollTo(0, 0);
+        </body>
+      </method>
+
+    </implementation>
+
+    
+  </binding>
+</bindings>

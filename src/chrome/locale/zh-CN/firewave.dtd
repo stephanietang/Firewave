@@ -1,0 +1,11 @@
+<!ENTITY firewave.hello.label            "This is firewave!">
+<!ENTITY firewave.helloMenu.accesskey    "T">
+<!ENTITY firewave.helloItem.accesskey    "h">
+<!ENTITY firewave.toggleMainPanel "Show Main Panel">
+<!ENTITY firewave.addAccount "Add Account">
+<!ENTITY firewave.viewAllAccount "View All Accounts">
+<!ENTITY firewave.preference "Preferences">
+<!ENTITY firewave.logout "Log out">
+<!ENTITY firewave.viewVersion "Version：0.1">
+<!ENTITY firewave.removeAccount "Remove Account">
+<!ENTITY firewave.addAccount "Add Account">

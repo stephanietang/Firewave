@@ -1,0 +1,15 @@
+#firewave-toolbar-button
+  {list-style-image: url("chrome://firewave/skin/firewave-icon.png");}
+
+/* common style for all custom buttons */
+.toolbarbutton                  
+  {-moz-image-region: rect( 0px 24px 24px  0px);}
+
+.toolbarbutton:hover     
+  {-moz-image-region: rect(0px 24px 24px  0px);}
+
+[iconsize="small"] .toolbarbutton
+  {-moz-image-region: rect( 0px 40px 16px 24px);}
+
+[iconsize="small"] .toolbarbutton:hover
+  {-moz-image-region: rect(24px 40px 40px 24px);}
